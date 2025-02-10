@@ -2,10 +2,6 @@
 ## Prediction function
 
 predict.ossl <- function(target = "clay.tot_usda.a334_w.pct",
-                         # spectra.file = "sample-data/235157XS01.0",
-                         # spectra.file = "sample-data/icr056141.0",
-                         # spectra.file = "sample-data/101453MD01.asd",
-                         # spectra.file = "sample-data/235157MD01.asd",
                          # spectra.file = "sample-data/sample_mir_data.csv",
                          # spectra.file = "sample-data/sample_visnir_data.csv",
                          spectra.file = "sample_neospectra_data.csv",
@@ -14,7 +10,7 @@ predict.ossl <- function(target = "clay.tot_usda.a334_w.pct",
                          spectra.type = "nir.neospectra",
                          subset.type = "ossl",
                          geo.type = "na",
-                         models.dir = "~/projects/mnt-neospectra/ossl_models/"){
+                         models.dir = "~/projects/temp/ossl_models/"){
   
   suppressMessages(library("tidyverse"))
   suppressMessages(library("qs"))
@@ -369,13 +365,12 @@ predict.ossl <- function(target = "clay.tot_usda.a334_w.pct",
     mutate(std_dev = error*confidence.level.factor) %>%
     mutate(lower = !!as.name(target)-(std_dev),
            upper = !!as.name(target)+(std_dev)) %>%
-    select(-error)
+    select(-error, -std_dev)
 
   ## Back-transforming
   if(grepl("log..", target)){
     out <- out %>%
       dplyr::mutate(!!target := expm1(!!as.name(target)),
-                    std_dev = expm1(std_dev),
                     lower = expm1(lower),
                     upper = expm1(upper))
   }

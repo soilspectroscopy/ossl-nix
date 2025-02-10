@@ -32,11 +32,11 @@ Available models are described in
 [**fitted_models_performance_v1.2.csv**](fitted_models_performance_v1.2.csv).
 
 After local execution, the output `CSV` will contain the prediction
-value for the soil property of interest with lower and upper uncertainty
-limits for one standard deviation (all back-transformed if log1p
-transformation was used), and a flag column for **potential
-underrepresented** spectra given the OSSL calibration data, which is
-calculated based on PCA and Q statistics.
+value for the soil property of interest with the lower and upper
+uncertainty limits for one standard deviation (all back-transformed if
+log1p transformation was used, so it can be asymmetrical), and a flag
+for potentially underrepresented spectra given the OSSL calibration data
+(calculated based on PCA and residual Q statistics).
 
 We provided in this repository:  
 1. A prediction function that preprocess and provide all prediction
