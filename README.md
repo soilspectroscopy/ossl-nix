@@ -59,7 +59,7 @@ Download [**“Nix: the package manager”**](https://nixos.org/download/)
 for reproducible computation. Follow the installation instructions
 according to your operating system.
 
-If you are and R user, you can learn more about Nix from the highly
+If you are an R user, you can learn more about Nix from the highly
 recommended [**rix documentation**](https://docs.ropensci.org/rix/)
 (also gives a great overview for non R users).
 
