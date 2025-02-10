@@ -59,6 +59,10 @@ Download [**“Nix: the package manager”**](https://nixos.org/download/)
 for reproducible computation. Follow the installation instructions
 according to your operating system.
 
+If you are and R user, you can learn more about Nix from the highly
+recommended [**rix documentation**](https://docs.ropensci.org/rix/)
+(also gives a great overview for non R users).
+
 Also, make sure your spectral measurements are stored on a `CSV` file
 with the first columns indicating the sample id, while all the remaining
 columns represent the measure spectral range. For using the pre-trained
