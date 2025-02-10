@@ -1,0 +1,25 @@
+.DS_Store
+/_book/
+/node_modules/
+/book.pdf
+/book.mobi
+/book.epub
+
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+.RDataTmp
+
+# User-specific files
+.Ruserdata
+
+# RStudio files
+.Rproj.user/
+
+# R Environment Variables
+.Renviron
+
+/.quarto/
