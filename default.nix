@@ -35,7 +35,6 @@ let
       matrixStats
       mlr3
       mlr3misc
-      mlr3viz
       paradox
       prospectr
       qs
@@ -46,7 +45,7 @@ let
       name = "CoxBoost";
       src = pkgs.fetchgit {
         url = "https://github.com/binderh/CoxBoost";
-        rev = "HEAD";
+        rev = "1dc47d7051f660b28520670b34d031143f9eadfd";
         sha256 = "sha256-5Ck0idCpn6oU3RBULqcz7bEtOnYxzKH29aHVzOUWGsQ=";
       };
       propagatedBuildInputs = builtins.attrValues {
@@ -62,7 +61,7 @@ let
       name = "set6";
       src = pkgs.fetchgit {
         url = "https://github.com/xoopR/set6";
-        rev = "HEAD";
+        rev = "a901255c26614a0ece317dc849621420f9393d42";
         sha256 = "sha256-3iDxFyGqSp4msc2BzIFx62nQtO0OsWI8gYhyod4un4A=";
       };
       propagatedBuildInputs = builtins.attrValues {
@@ -78,7 +77,7 @@ let
       name = "param6";
       src = pkgs.fetchgit {
         url = "https://github.com/xoopR/param6";
-        rev = "HEAD";
+        rev = "0fa35771276fc05efe007a71bda466ced1e4c5eb";
         sha256 = "sha256-6mfOzx0DPGnKyXJPFm1V1qhsLCIHC26XW8q5jZ2gpAg=";
       };
       propagatedBuildInputs = builtins.attrValues {
@@ -94,8 +93,8 @@ let
       name = "distr6";
       src = pkgs.fetchgit {
         url = "https://github.com/xoopR/distr6";
-        rev = "HEAD";
-        sha256 = "sha256-1PQ2ptGbDumsG5OmAGRqgvoLHu7YinrIupDW1uu8wVA=";
+        rev = "255a666dfe9119ceb78c769069eacc223c95b066";
+        sha256 = "sha256-sKSY4hunJFjhB9sA3r2sy95EYatkuH/9ZBodrbQVOYs=";
       };
       propagatedBuildInputs = builtins.attrValues {
         inherit (pkgs.rPackages) 
@@ -105,19 +104,6 @@ let
           R6
           Rcpp;
       } ++ [ set6 param6 ];
-    });
-    
-    survivalmodels = (pkgs.rPackages.buildRPackage {
-      name = "survivalmodels";
-      src = pkgs.fetchgit {
-        url = "https://github.com/RaphaelS1/survivalmodels";
-        rev = "HEAD";
-        sha256 = "sha256-+L6ops0DkXXwjdCSLXkIZ1RPHbt2NoiL6/dQFb18K/o=";
-      };
-      propagatedBuildInputs = builtins.attrValues {
-        inherit (pkgs.rPackages) 
-          Rcpp;
-      } ++ [ distr6 param6 set6 ];
     });
 
     mlr3proba = (pkgs.rPackages.buildRPackage {
@@ -135,12 +121,23 @@ let
           ggplot2
           mlr3misc
           mlr3viz
-          mlr3pipelines
-          survivalmodels
           paradox
           R6
           Rcpp
           survival;
+      } ++ [ distr6 param6 set6 survivalmodels ];
+    });
+
+    survivalmodels = (pkgs.rPackages.buildRPackage {
+      name = "survivalmodels";
+      src = pkgs.fetchgit {
+        url = "https://github.com/RaphaelS1/survivalmodels";
+        rev = "9d59b0c93780a71ae8a6c9904eed72a360a1c2d6";
+        sha256 = "sha256-LvrT6425UU3gMY3xpXCz/iE9I1GH7gsWxTKOO8KMpVU=";
+      };
+      propagatedBuildInputs = builtins.attrValues {
+        inherit (pkgs.rPackages) 
+          Rcpp;
       } ++ [ distr6 param6 set6 ];
     });
 

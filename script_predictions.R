@@ -13,7 +13,7 @@ source("OSSL_functions.R")
 
 ## Change with your local directory containing the ossl models
 dir.ossl.models <- paste0("~/projects/temp/ossl_models/")
-export.dir <- "predictions/"
+export.dir <- "~/predictions/"
 
 if(!dir.exists(export.dir)){dir.create(export.dir)}
 
